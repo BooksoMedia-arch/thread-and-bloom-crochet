@@ -1,6 +1,7 @@
 ﻿const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const helmet = require("helmet");
 const path = require("path");
 require("dotenv").config();
 
@@ -10,10 +11,12 @@ const mongoUri = process.env.MONGODB_URI;
 
 // Middleware
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 
-// Serve your existing website
-app.use(express.static(path.join(__dirname)));
+// Serve only public website files; keep server code and configuration private.
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 // Start HTTP independently so the static site remains available when MongoDB is offline.
 app.listen(PORT, () => {
