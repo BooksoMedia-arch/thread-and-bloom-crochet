@@ -11,7 +11,7 @@ const mongoUri = process.env.MONGODB_URI;
 
 // Middleware
 app.use(cors());
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 
 // Serve only public website files; keep server code and configuration private.
