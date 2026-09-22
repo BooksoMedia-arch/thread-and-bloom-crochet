@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ritus-thread-and-bloom
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGODB_URI
+        sync: false

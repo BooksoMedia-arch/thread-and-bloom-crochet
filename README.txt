@@ -1,12 +1,19 @@
-THREAD & BLOOM — HANDMADE CROCHET WEBSITE
+RITU'S THREAD & BLOOM — HANDMADE CROCHET WEBSITE
 
-How to run:
-1. Extract/open this folder in VS Code.
-2. Open index.html in a browser.
-3. Optional: install the VS Code "Live Server" extension and click "Go Live".
+Local development:
+1. Install Node.js.
+2. Run `npm install`.
+3. Run `npm start`.
+4. Open http://localhost:5000.
+
+Online deployment:
+1. Create a Render Web Service from the GitHub repository.
+2. Use `npm install` as the build command and `npm start` as the start command.
+3. Add the MongoDB Atlas connection string as the `MONGODB_URI` environment variable.
+4. Render uses `/api/health` to check service health.
 
 Included:
-- 20 uploaded product photos
+- 25 uploaded product photos
 - Product names and prices
 - Search and category filters
 - Responsive desktop/mobile design
@@ -14,4 +21,5 @@ Included:
 - Cart saved in browser localStorage
 - Handmade boutique design
 
-The checkout button is a demo. It can later be connected to WhatsApp, Razorpay, or a proper order system.
+WhatsApp ordering sends the cart contents and total to 8371915111.
+MongoDB Atlas is used by the backend when `MONGODB_URI` is configured.
