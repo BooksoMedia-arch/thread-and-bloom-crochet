@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Ritu's Thread & Bloom | Handmade Crochet Boutique</title>
+<title>Ritu's Thread & HandBloom | Handmade Crochet Boutique</title>
 <meta name="description" content="Handmade crochet accessories, pouches, charms and hair accessories.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
@@ -23,7 +23,7 @@ h1{font-family:'Playfair Display';font-size:clamp(44px,6vw,74px);line-height:.98
 .controls{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);background:#fff;padding:13px 16px;border-radius:14px;font:inherit;outline:none}.search:focus{border-color:#d99aaa;box-shadow:0 0 0 4px #b84c6812}.sort-control{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;font-weight:700;white-space:nowrap}.sort-control select{border:1px solid var(--rose2);background:#fff;padding:12px 38px 12px 14px;border-radius:14px;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;outline:none}.sort-control select:focus{box-shadow:0 0 0 4px #b84c6812}
 .filter{border:1px solid var(--line);background:#fff;padding:12px 16px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:600}.filter.active,.filter:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s;position:relative}.card:hover{transform:translateY(-5px);box-shadow:0 18px 45px #8e465515}
-.pic{height:260px;background:#f7eee9;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover;transition:.4s}.card:hover .pic img{transform:scale(1.04)}
+.pic{height:260px;background:#f7eee9;overflow:hidden}.pic img{width:100%;height:100%;object-fit:contain}
 .info{padding:15px}.cat{font-size:11px;color:var(--rose);font-weight:700;text-transform:uppercase;letter-spacing:1px}.name{font-weight:700;margin:6px 0 12px;min-height:40px}.bottom{display:flex;justify-content:space-between;align-items:center}.price{font-size:18px;font-weight:800}.add{border:0;background:var(--ink);color:#fff;border-radius:12px;padding:9px 12px;cursor:pointer;font-weight:700}.add:hover{background:var(--rose)}
 .about{background:#3a2b31;color:#fff;border-radius:30px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}.about h2{font-family:'Playfair Display';font-size:36px;margin:0 0 10px}.about p{color:#eadfe2;line-height:1.7}.points{display:grid;grid-template-columns:1fr 1fr;gap:12px}.point{background:#ffffff0d;border:1px solid #ffffff18;border-radius:16px;padding:16px}.point b{display:block;margin-bottom:5px}
 footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13px}.contact-details{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:10px 0 16px}.contact-details a{color:var(--rose);font-weight:700}.empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted)}
@@ -38,9 +38,9 @@ footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13p
 </head>
 <body>
 <header><nav class="nav">
-<a class="brand" href="#"><span class="logo">✿</span> Ritu's Thread & Bloom</a>
+<a class="brand" href="#"><span class="logo">✿</span> Ritu's Thread & HandBloom</a>
 <div class="navlinks"><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></div>
-<button class="cartbtn" onclick="openCart()">Bag <span id="cartCount" class="badge">0</span></button>
+<button class="cartbtn" onclick="openCart()">Cart <span id="cartCount" class="badge">0</span></button>
 </nav></header>
 
 <main>
@@ -69,12 +69,12 @@ footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13p
 <div class="points"><div class="point"><b>🧶 Handmade</b><span>Crafted stitch by stitch.</span></div><div class="point"><b>🌸 Gift-ready</b><span>Sweet pieces for someone special.</span></div><div class="point"><b>🎨 Colourful</b><span>Playful designs and yarn colours.</span></div><div class="point"><b>💗 Personal</b><span>Made with attention to detail.</span></div></div></div>
 </section>
 </main>
-<footer id="contact"><strong>Contact Ritu's Thread & Bloom</strong><div class="contact-details"><a href="tel:8371915111">☎ 8371915111</a><a href="https://wa.me/918371915111" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:suwbseven@gmail.com">suwbseven@gmail.com</a></div>© 2026 Ritu's Thread & Bloom · Handmade with love</footer>
+<footer id="contact"><strong>Contact Ritu's Thread & HandBloom</strong><div class="contact-details"><a href="tel:8371915111">☎ 8371915111</a><a href="https://wa.me/918371915111" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:suwbseven@gmail.com">suwbseven@gmail.com</a></div>© 2026 Ritu's Thread & HandBloom · Handmade with love</footer>
 
 <div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="panel">
 <div class="panelhead"><h2>Your Bag</h2><button class="close" onclick="closeCart()">×</button></div>
 <div id="cartItems"></div><div class="total"><span>Total</span><span id="total">₹0</span></div>
-<button class="checkout" onclick="checkout()">Order on WhatsApp</button><p style="font-size:12px;color:var(--muted);text-align:center">Send your order directly to Ritu's Thread & Bloom.</p>
+<button class="checkout" onclick="checkoutCod()">Place COD order on WhatsApp</button><p style="font-size:12px;color:var(--muted);text-align:center">COD available within 2km from LIC More.</p>
 </aside></div>
 
 <script>
@@ -105,11 +105,23 @@ products.push(
 { id: 22, name: 'Rose Hair Accessory White', price: 100, category: 'Hair Accessories', image: 'Rose Hair Accessories White, Rs-100.jpeg', color: 'White' },
 { id: 23, name: 'Rose Hair Accessory', price: 150, category: 'Hair Accessories', image: 'Rose Hair Accessories, Rs-150.jpeg', color: 'Red' },
 { id: 24, name: 'Rose Keychain', price: 100, category: 'Keychains', image: 'Rose Keychain, Rs-100.jpeg', color: 'Red and green' },
-{ id: 25, name: 'Sunflower Bag Charm', price: 80, category: 'Bag Charms', image: 'Sunflower Bag Charm Rs-80.jpeg', color: 'Yellow and brown' }
+{ id: 25, name: 'Sunflower Bag Charm', price: 80, category: 'Bag Charms', image: 'Sunflower Bag Charm Rs-80.jpeg', color: 'Yellow and brown' },
+{ id: 26, name: 'Hair BunStick Sunflower', price: 250, category: 'Hair Accessories', image: 'Hair Bun Stick Sunflower, Yellow.jpeg', color: 'Yellow' }
 );
 products.forEach(product=>product.price-=1);
 let category='All';
-let cart=JSON.parse(localStorage.getItem('threadBloomCart')||'{}');
+function loadCart() {
+	try {
+		const savedCart = JSON.parse(localStorage.getItem('threadBloomCart') || '{}');
+		if (!savedCart || typeof savedCart !== 'object' || Array.isArray(savedCart)) return {};
+		return Object.fromEntries(Object.entries(savedCart).filter(([id, quantity]) =>
+			products.some(product => product.id === Number(id)) && Number.isSafeInteger(quantity) && quantity > 0
+		));
+	} catch {
+		return {};
+	}
+}
+let cart=loadCart();
 function setCat(cat){category=cat;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));render()}
 function render(){const q=document.getElementById('search').value.toLowerCase().trim();const sort=document.getElementById('sort').value;const list=products.filter(p=>(category==='All'||p.category===category)&&p.name.toLowerCase().includes(q));if(sort==='price-low')list.sort((a,b)=>a.price-b.price);if(sort==='price-high')list.sort((a,b)=>b.price-a.price);if(sort==='name')list.sort((a,b)=>a.name.localeCompare(b.name));const grid=document.getElementById('grid');if(!list.length){grid.innerHTML='<div class="empty">No products found. Try another search.</div>';return}grid.innerHTML=list.map(p=>`<article class="card"><div class="pic"><img src="images/${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='images/phone-pouch-pink.jpeg'"></div><div class="info"><div class="cat">${p.category}</div><div class="name">${p.name}, ${p.color.replace(/\b[a-z]/g, letter => letter.toUpperCase()).replace(/\bAnd\b/g, 'and')}</div><div class="bottom"><div class="price">₹${p.price}</div><button class="add" onclick="addToCart(${p.id})">Add +</button></div></div></article>`).join('')}
 function addToCart(id){cart[id]=(cart[id]||0)+1;save();updateCart();openCart()}
@@ -118,6 +130,17 @@ function updateCart(){const count=Object.values(cart).reduce((a,b)=>a+b,0);docum
 function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];save();updateCart()}
 function openCart(){document.getElementById('drawer').classList.add('open')}function closeCart(){document.getElementById('drawer').classList.remove('open')}
 function checkout(){if(!Object.keys(cart).length)return alert('Your bag is empty.');const lines=Object.entries(cart).map(([id,qty])=>{const p=products.find(product=>product.id==id);return `${p.name} × ${qty} = ₹${p.price*qty}`});const total=Object.entries(cart).reduce((sum,[id,qty])=>sum+products.find(product=>product.id==id).price*qty,0);const message=`Hello Ritu's Thread & Bloom!%0A%0AI would like to place this order:%0A${lines.join('%0A')}%0A%0ATotal: ₹${total}%0A%0APlease share the payment and delivery details.`;window.open(`https://wa.me/918371915111?text=${encodeURIComponent(decodeURIComponent(message))}`,'_blank')}
+function checkoutCod() {
+	if (!Object.keys(cart).length) return alert('Your bag is empty.');
+	const entries = Object.entries(cart);
+	const lines = entries.map(([id, quantity]) => {
+		const product = products.find(item => item.id == id);
+		return `${product.name} × ${quantity} = ₹${product.price * quantity}`;
+	});
+	const total = entries.reduce((sum, [id, quantity]) => sum + products.find(item => item.id == id).price * quantity, 0);
+	const message = `Hello Ritu's Thread & HandBloom!\n\nI would like to place this order:\n${lines.join('\n')}\n\nTotal: ₹${total}\nCOD available within 2km from LIC More.`;
+	window.open(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`, '_blank');
+}
 render();updateCart();
 </script>
 </body></html>
