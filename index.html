@@ -34,9 +34,48 @@ footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13p
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.hero-art{display:none}.about{grid-template-columns:1fr}}
 @media(max-width:650px){.navlinks{display:none}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.pic{height:210px}.section h2{font-size:30px}.hero{padding-top:45px}.about{padding:28px}}
 @media(max-width:430px){.grid{grid-template-columns:repeat(2,1fr)}.pic{height:180px}.name{font-size:14px}.info{padding:12px}}
+:root{--rose:#a84355;--rose2:#c96c51;--cream:#f7f8f0;--ink:#243c32;--muted:#69776c;--card:#fffefa;--line:#dde4d8;--leaf:#294a3e;--sage:#e9efe5;--gold:#e7b547}
+body{background:var(--cream);font-family:'DM Sans',sans-serif}
+.announcement{display:flex;justify-content:space-between;gap:14px;padding:9px max(22px,calc((100vw - 1240px)/2));background:var(--leaf);color:#fff9e9;font-size:11px;font-weight:700;text-transform:uppercase}
+header{background:rgba(247,248,240,.96);border-bottom-color:var(--line)}
+.nav{max-width:1280px;padding:12px 22px}
+.brand,.section h2,.about h2,.panelhead h2{font-family:'Playfair Display',serif}
+.brand{font-size:25px;color:var(--leaf)}
+.logo{width:38px;height:38px;background:var(--gold);color:var(--leaf);box-shadow:none;border-radius:8px}
+.navlinks{color:var(--muted)}.navlinks a:hover{color:var(--rose)}
+.cartbtn{border-color:var(--leaf);background:var(--leaf);color:#fff;border-radius:5px;padding:10px 14px}.cartbtn:hover{background:var(--rose);border-color:var(--rose)}
+.badge{background:var(--gold);color:var(--leaf)}
+.hero{max-width:none;padding:58px max(24px,calc((100vw - 1240px)/2));grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:54px;background:linear-gradient(110deg,#eef2e8 0%,#e7eee3 100%);border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--rose);letter-spacing:0}
+h1{font-family:'Playfair Display',serif;font-size:60px;line-height:1.02;letter-spacing:0;color:var(--leaf);margin:12px 0 16px}
+.hero p{color:var(--muted);font-size:16px;line-height:1.8;max-width:470px}
+.cta{background:var(--leaf);border-radius:5px;padding:13px 18px;box-shadow:none}.cta:hover{background:var(--rose)}
+.hero-art{min-height:0;display:block}
+.hero-card{width:100%;height:410px;padding:0;transform:none;border-radius:6px;background:#dfe8d9;box-shadow:0 18px 40px #243c3218;overflow:hidden}
+.hero-card img{border-radius:0;object-fit:cover;object-position:center 28%}
+.blob,.floating{display:none}
+.section{max-width:1280px;padding:52px 22px 76px}
+.sectionhead{margin-bottom:24px}.section h2{font-size:38px;color:var(--leaf)}.sectionhead p{color:var(--muted)}
+.controls{gap:8px;margin:22px 0 24px}
+.search{border-color:var(--line);border-radius:5px;background:var(--card);padding:12px 14px}.search:focus{border-color:var(--leaf);box-shadow:0 0 0 3px #294a3e18}
+.sort-control{color:var(--muted)}.sort-control select{border-color:var(--line);border-radius:5px;color:var(--ink)}
+.filter{border-color:var(--line);border-radius:5px;background:var(--card);padding:11px 14px;color:var(--leaf)}.filter.active,.filter:hover{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.grid{gap:20px}.card{border:1px solid var(--line);border-radius:6px;background:var(--card);transition:transform .2s,border-color .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);border-color:#c7d2c4;box-shadow:0 12px 28px #243c3212}
+.pic{height:auto;aspect-ratio:1;background:#edf0e7}.pic img{object-fit:contain}
+.info{padding:14px 15px 16px}.cat{color:var(--rose);letter-spacing:0}.name{color:var(--ink);margin:5px 0 12px;min-height:40px}.price{color:var(--leaf)}.add{background:var(--leaf);border-radius:5px}.add:hover{background:var(--rose)}
+.about{background:var(--sage);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:36px;gap:36px;margin-top:10px}
+.about h2{color:var(--leaf)}.about p{color:var(--muted)}.points{gap:8px 20px}.point{background:transparent;border:0;border-top:1px solid #cfd9cc;border-radius:0;padding:14px 4px}.point b{color:var(--leaf)}
+footer{background:var(--leaf);color:#f6f5e9;padding:30px 20px 34px}.contact-details a{color:#f1c85b}.contact-details a:hover{color:#fff}
+.panel{background:var(--cream)}.close{border-radius:5px;border-color:var(--line)}.checkout{background:var(--leaf);border-radius:5px}.checkout:hover{background:var(--rose)}
+.cartitem{border-bottom-color:var(--line)}.qty button{border-radius:5px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:900px){.hero{grid-template-columns:1fr 1fr;padding:42px 24px;gap:28px}.hero-art{display:block}.hero-card{height:350px}.about{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.announcement{justify-content:center;flex-direction:column;align-items:center;gap:3px;text-align:center;padding:8px 14px}.nav{padding:10px 16px}.brand{font-size:21px}.hero{grid-template-columns:1fr;padding:34px 20px 28px;gap:24px}.hero-art{display:block}.hero-card{height:300px}h1{font-size:42px}.hero p{font-size:15px}.section{padding:38px 16px 56px}.section h2{font-size:32px}.grid{gap:12px}.pic{height:auto;aspect-ratio:1}.about{grid-template-columns:1fr;padding:24px;gap:18px}.points{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.brand{font-size:18px}.logo{width:34px;height:34px}.cartbtn{padding:9px 10px}.hero-card{height:260px}.info{padding:11px}.name{font-size:14px}.add{padding:8px 9px}.filter{padding:9px 11px}}
 </style>
 </head>
 <body>
+<div class="announcement"><span>Handmade in Jumbuni</span><span>COD available within 2km from LIC More</span></div>
 <header><nav class="nav">
 <a class="brand" href="#"><span class="logo">✿</span> Ritu's Thread & HandBloom</a>
 <div class="navlinks"><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></div>
@@ -45,11 +84,11 @@ footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13p
 
 <main>
 <section class="hero">
-<div><div class="eyebrow">Handmade • Crochet • With Love</div>
-<h1>Little things,<br><span style="color:var(--rose)">made beautiful.</span></h1>
+<div><div class="eyebrow">Handmade in Jumbuni</div>
+<h1>Handmade crochet,<br><span style="color:var(--rose)">made to bloom.</span></h1>
 <p>Discover colourful handmade crochet accessories, charms, pouches and hair pieces—crafted with care and a playful touch.</p>
-<a class="cta" href="#shop">Explore the collection →</a></div>
-<div class="hero-art"><div class="blob"></div><div class="hero-card"><img src="images/rose-hair-accessories-pink.jpeg" alt="Handmade crochet rose"></div><div class="floating f1">✦ Handmade</div><div class="floating f2">♡ Made with care</div></div>
+<a class="cta" href="#shop">Shop the collection →</a></div>
+<div class="hero-art"><div class="hero-card"><img src="images/Hair Bun Stick Sunflower, Yellow.jpeg" alt="Yellow sunflower crochet hair bun stick"></div></div>
 </section>
 
 <section class="section" id="shop">
@@ -72,7 +111,7 @@ footer{text-align:center;color:var(--muted);padding:30px 20px 45px;font-size:13p
 <footer id="contact"><strong>Contact Ritu's Thread & HandBloom</strong><div class="contact-details"><a href="tel:8371915111">☎ 8371915111</a><a href="https://wa.me/918371915111" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:suwbseven@gmail.com">suwbseven@gmail.com</a></div>© 2026 Ritu's Thread & HandBloom · Handmade with love</footer>
 
 <div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="panel">
-<div class="panelhead"><h2>Your Bag</h2><button class="close" onclick="closeCart()">×</button></div>
+<div class="panelhead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
 <div id="cartItems"></div><div class="total"><span>Total</span><span id="total">₹0</span></div>
 <button class="checkout" onclick="checkoutCod()">Place COD order on WhatsApp</button><p style="font-size:12px;color:var(--muted);text-align:center">COD available within 2km from LIC More.</p>
 </aside></div>
