@@ -16,7 +16,15 @@ app.use(express.json());
 
 // Serve only public website files; keep server code and configuration private.
 app.use("/images", express.static(path.join(__dirname, "images")));
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+const publicPages = {
+  "/": "index.html",
+  "/product.html": "product.html",
+  "/checkout.html": "checkout.html",
+  "/confirmation.html": "confirmation.html"
+};
+app.get(Object.keys(publicPages), (req, res) => {
+  res.sendFile(path.join(__dirname, publicPages[req.path]));
+});
 
 // Start HTTP independently so the static site remains available when MongoDB is offline.
 app.listen(PORT, () => {
