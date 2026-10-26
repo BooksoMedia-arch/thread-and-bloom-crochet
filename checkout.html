@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Checkout | Ritu's Thread & HandBloom</title>
+  <meta name="description" content="Review your crochet order details before placing a WhatsApp COD request.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+    :root{--rose:#b84c68;--rose2:#d96f87;--cream:#fff9f5;--ink:#352a2e;--muted:#786b70;--card:#fff;--line:#f0dfe2;--leaf:#294a3e;--gold:#e7b547;--sage:#edf6eb}
+    *{box-sizing:border-box} body{margin:0;background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--ink)} a{text-decoration:none;color:inherit} img{display:block;max-width:100%}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}.header{position:sticky;top:0;background:rgba(255,249,245,.98);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);z-index:20}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.brand{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--leaf)}.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#f1d675,#e7b547);display:grid;place-items:center}.actions{display:flex;gap:10px;align-items:center}.link-btn{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--leaf);font-weight:700}.primary{background:var(--leaf);color:#fff;border:0;padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer}.checkout-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding:32px 0 60px}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 16px 32px rgba(52,42,46,.04)}.heading{font-family:'Playfair Display',serif;font-size:36px;color:var(--leaf);margin:0 0 8px}.sub{color:var(--muted);margin:0 0 18px}.cart-items{display:flex;flex-direction:column;gap:14px}.item{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line)}.item img{width:80px;height:80px;object-fit:cover;border-radius:12px;background:#f7efe7}.item-name{font-weight:700}.price-line{display:flex;justify-content:space-between;align-items:center;gap:8px}.qty-control{display:flex;align-items:center;gap:10px;margin-top:8px}.qty-control button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:800}.summary{display:flex;flex-direction:column;gap:12px}.summary-row{display:flex;justify-content:space-between;font-weight:700}.summary-row.total{font-size:28px;color:var(--leaf);margin-top:8px;padding-top:12px;border-top:1px solid var(--line)}.note{font-size:13px;color:var(--muted);line-height:1.6}.empty{padding:48px 0;color:var(--muted);text-align:center}.checkout-btn{width:100%;margin-top:10px;padding:15px 18px;border:0;border-radius:12px;background:var(--rose);color:#fff;font-weight:800;font-size:16px;cursor:pointer}@media(max-width:900px){.checkout-wrap{grid-template-columns:1fr}}@media(max-width:560px){.nav{padding:12px 0}.heading{font-size:30px}.item{flex-wrap:wrap}.item img{width:100px;height:100px}}  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="logo">✿</span> Ritu's Thread & HandBloom</a>
+      <div class="actions">
+        <a href="index.html" class="link-btn">Back to shop</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="checkout-wrap">
+      <section class="panel">
+        <h1 class="heading">Your order</h1>
+        <p class="sub">Review your crochet picks before placing the COD order.</p>
+        <div id="checkoutItems" class="cart-items"></div>
+      </section>
+      <aside class="panel summary">
+        <h2 style="margin:0;font-size:28px;color:var(--leaf);font-family:'Playfair Display',serif;">Summary</h2>
+        <div class="summary-row"><span>Items</span><span id="itemCount">0</span></div>
+        <div class="summary-row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="summary-row"><span>Delivery</span><span>Local COD</span></div>
+        <div class="summary-row total"><span>Total</span><span id="grandTotal">₹0</span></div>
+        <p class="note">COD available within 2km from LIC More. We’ll confirm your order on WhatsApp after you send the request.</p>
+        <button class="checkout-btn" onclick="placeOrder()">Place COD order on WhatsApp</button>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const products = JSON.parse(localStorage.getItem('threadBloomProductCatalog') || '[]');
+    const cart = JSON.parse(localStorage.getItem('threadBloomCart') || '{}');
+
+    function formatCurrency(value){ return '₹' + Number(value || 0); }
+
+    function renderCheckout(){
+      const entries = Object.entries(cart);
+      const container = document.getElementById('checkoutItems');
+      if (!entries.length) {
+        container.innerHTML = '<div class="empty">Your bag is empty. <a href="index.html" style="color:var(--rose);font-weight:700;">Go shopping</a></div>';
+        document.getElementById('itemCount').textContent = '0';
+        document.getElementById('subtotal').textContent = '₹0';
+        document.getElementById('grandTotal').textContent = '₹0';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = entries.map(([id, qty]) => {
+        const product = products.find(item => String(item.id) === String(id)) || { name: 'Product', price: 0, image: 'phone-pouch-pink.jpeg' };
+        const itemTotal = product.price * qty;
+        subtotal += itemTotal;
+        return `
+          <div class="item">
+            <img src="images/${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='images/phone-pouch-pink.jpeg'">
+            <div style="flex:1;">
+              <div class="item-name">${product.name}</div>
+              <div class="price-line">
+                <span>₹${product.price} each</span>
+                <strong>₹${itemTotal}</strong>
+              </div>
+              <div class="qty-control">
+                <button onclick="changeQty(${id}, -1)">−</button>
+                <span>${qty}</span>
+                <button onclick="changeQty(${id}, 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const totalQty = entries.reduce((sum, [, qty]) => sum + Number(qty), 0);
+      document.getElementById('itemCount').textContent = totalQty;
+      document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+      document.getElementById('grandTotal').textContent = formatCurrency(subtotal);
+    }
+
+    function changeQty(id, delta){
+      const next = { ...cart };
+      const current = Number(next[String(id)] || 0) + delta;
+      if (current <= 0) delete next[String(id)];
+      else next[String(id)] = current;
+      localStorage.setItem('threadBloomCart', JSON.stringify(next));
+      window.location.reload();
+    }
+
+    function placeOrder(){
+      const entries = Object.entries(JSON.parse(localStorage.getItem('threadBloomCart') || '{}'));
+      if (!entries.length) return alert('Your bag is empty.');
+      const productList = entries.map(([id, quantity]) => {
+        const product = products.find(item => String(item.id) === String(id)) || { name: 'Product', price: 0 };
+        return `${product.name} × ${quantity} = ₹${product.price * quantity}`;
+      }).join('\n');
+      const total = entries.reduce((sum, [id, quantity]) => {
+        const product = products.find(item => String(item.id) === String(id)) || { price: 0 };
+        return sum + product.price * quantity;
+      }, 0);
+      const message = `Hello Ritu's Thread & HandBloom!\n\nI would like to place this order:\n${productList}\n\nTotal: ₹${total}\nCOD available within 2km from LIC More.`;
+      localStorage.removeItem('threadBloomCart');
+      window.open(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`, '_blank');
+      window.location.href = 'confirmation.html';
+    }
+
+    renderCheckout();
+  </script>
+</body>
+</html>
