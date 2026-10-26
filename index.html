@@ -268,15 +268,16 @@ function updateCart(){const count=Object.values(cart).reduce((a,b)=>a+b,0);docum
 function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];save();updateCart()}
 function openCart(){document.getElementById('drawer').classList.add('open')}function closeCart(){document.getElementById('drawer').classList.remove('open')}
 function formatOrderLines(entries){return entries.map(([id,quantity])=>{const product=products.find(item=>item.id==id);const imageUrl=new URL(`/images/${encodeURIComponent(product.image)}`,window.location.origin).href;return `${product.name} × ${quantity} = ₹${product.price*quantity}\nImage: ${imageUrl}`}).join('\n')}
-function checkout(){const entries=Object.entries(cart);if(!entries.length)return alert('Your bag is empty.');const lines=formatOrderLines(entries);const total=entries.reduce((sum,[id,qty])=>sum+products.find(p=>p.id==id).price*qty,0);const message=`Hello Ritu's Thread & Bloom!\n\nI would like to place this order:\n${lines}\n\nTotal: ₹${total}\n\nPlease share the payment and delivery details.`;window.open(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`,'_blank')}
+function checkout(){const entries=Object.entries(cart);if(!entries.length)return alert('Your bag is empty.');const lines=formatOrderLines(entries);const total=entries.reduce((sum,[id,qty])=>sum+products.find(p=>p.id==id).price*qty,0);const message=`Hello Ritu's Thread & Bloom!\n\nI would like to place this order:\n${lines}\n\nTotal: ₹${total}\n\nPlease share the payment and delivery details.`;window.location.assign(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`)}
 function checkoutCod() {
 	const entries = Object.entries(cart);
 	if (!entries.length) return alert('Your bag is empty.');
 	const lines = formatOrderLines(entries);
 	const total = entries.reduce((sum, [id, quantity]) => sum + products.find(item => item.id == id).price * quantity, 0);
 	const message = `Hello Ritu's Thread & HandBloom!\n\nI would like to place this order:\n${lines}\n\nTotal: ₹${total}\nCOD available within 2km from LIC More.`;
-	window.open(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`, '_blank');
+	window.location.assign(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`);
 }
+save();
 render();updateCart();
 </script>
 </body></html>

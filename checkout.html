@@ -108,9 +108,7 @@
         return sum + product.price * quantity;
       }, 0);
       const message = `Hello Ritu's Thread & HandBloom!\n\nI would like to place this order:\n${productList}\n\nTotal: ₹${total}\nCOD available within 2km from LIC More.`;
-      localStorage.removeItem('threadBloomCart');
-      window.open(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`, '_blank');
-      window.location.href = 'confirmation.html';
+      window.location.assign(`https://wa.me/918371915111?text=${encodeURIComponent(message)}`);
     }
 
     renderCheckout();

@@ -99,7 +99,10 @@
       catch { return {}; }
     }
 
-    function saveCart(cart){ localStorage.setItem('threadBloomCart', JSON.stringify(cart)); }
+    function saveCart(cart){
+      localStorage.setItem('threadBloomCart', JSON.stringify(cart));
+      localStorage.setItem('threadBloomProductCatalog', JSON.stringify(products));
+    }
 
     function updateCartCount(){
       const cart = loadCart();

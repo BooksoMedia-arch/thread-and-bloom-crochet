@@ -18,6 +18,7 @@ app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 const publicPages = {
   "/": "index.html",
+  "/index.html": "index.html",
   "/product.html": "product.html",
   "/checkout.html": "checkout.html",
   "/confirmation.html": "confirmation.html"
