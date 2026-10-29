@@ -14,7 +14,7 @@
     .back-link{display:inline-flex;margin:26px 0 10px;padding:10px 16px;border:1px solid var(--line);background:#fff;border-radius:999px;color:var(--leaf);font-weight:700}
     .product-shell{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;padding:18px 0 60px}.gallery{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 16px 32px rgba(52,42,46,.04)}.main-image{width:100%;height:520px;object-fit:cover;border-radius:18px;background:#f7f1ef}.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}.thumb{height:80px;object-fit:cover;border-radius:12px;border:2px solid transparent;background:#f7ede8;cursor:pointer}.thumb.active{border-color:var(--rose)}
     .info-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px 24px 20px;box-shadow:0 16px 32px rgba(52,42,46,.04)}.eyebrow{display:inline-block;padding:7px 12px;border-radius:999px;background:#fbe7eb;color:var(--rose);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:11px}.h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4vw,52px);margin:14px 0 10px;color:var(--leaf)}.price{font-size:38px;font-weight:800;color:var(--leaf);margin:6px 0 18px}.meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}.meta span{padding:7px 10px;border-radius:999px;background:var(--sage);color:var(--leaf);font-weight:700;font-size:12px}.meta .stock-status{background:#e5f3e8;color:#236b38}.meta .stock-status.out-of-stock{background:#fbe7eb;color:#a33d4f}.meta .stock-status.unknown{background:#fff1d6;color:#805916}.description{margin:0 0 22px;color:var(--muted);line-height:1.8;font-size:16px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}.primary-btn,.secondary-btn{border:none;border-radius:14px;font-weight:800;padding:14px 18px;cursor:pointer}.primary-btn{background:var(--leaf);color:#fff}.secondary-btn{background:var(--rose);color:#fff}.primary-btn:disabled,.secondary-btn:disabled{opacity:.55;cursor:not-allowed}.detail-list{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--line)}.detail-list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;color:var(--muted)}.detail-list b{color:var(--ink)}
-    .detail-list .color-value{color:var(--product-color);font-weight:700}.detail-list .availability-value{color:#237343;font-weight:700}
+    .detail-list .color-value{color:var(--muted)}.detail-list .color-word{color:var(--swatch-color);font-weight:700}.detail-list .availability-value{color:#237343;font-weight:700}
     @media(max-width:900px){.product-shell{grid-template-columns:1fr}.main-image{height:420px}.thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}}
     @media(max-width:560px){.nav{padding:12px 0}.brand{font-size:20px}.product-shell{padding-bottom:32px}.main-image{height:320px}.actions{flex-direction:column}.primary-btn,.secondary-btn{width:100%}}
   </style>
@@ -111,25 +111,41 @@
       document.getElementById('cartCount').textContent = total;
     }
 
-    function getProductColorTextColor(color){
-      const palette = [
-        [/\bpink\b/, '#b83264'],
-        [/\bred\b/, '#b42332'],
-        [/\bblue\b/, '#286090'],
-        [/\bgreen\b/, '#2f6b3f'],
-        [/\bpurple\b|\bviolet\b/, '#6e3c91'],
-        [/\borange\b/, '#a74b0c'],
-        [/\byellow\b/, '#927000'],
-        [/\bblack\b/, '#252525'],
-        [/\bgray\b/, '#646b73'],
-        [/\bbrown\b/, '#76502f'],
-        [/\bmaroon\b/, '#7b2336'],
-        [/\bpeach\b/, '#b45b3e'],
-        [/\baqua\b/, '#14777a'],
-        [/\bwhite\b|\bcream\b|\bivory\b/, '#777064']
-      ];
-      const colorName = String(color || '').toLowerCase();
-      return palette.find(([pattern]) => pattern.test(colorName))?.[1] || '#8b5575';
+    function renderProductColor(color){
+      const palette = {
+        pink: '#b83264',
+        red: '#b42332',
+        blue: '#286090',
+        green: '#2f6b3f',
+        purple: '#6e3c91',
+        violet: '#6e3c91',
+        orange: '#a74b0c',
+        yellow: '#927000',
+        black: '#252525',
+        gray: '#646b73',
+        brown: '#76502f',
+        maroon: '#7b2336',
+        peach: '#b45b3e',
+        aqua: '#14777a',
+        white: '#777064',
+        cream: '#947c59',
+        ivory: '#947c59',
+        pastel: '#8663a8',
+        cherry: '#b42332'
+      };
+      const safeColor = String(color || 'Handpicked palette').replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[character]);
+      return safeColor.replace(/[A-Za-z]+(?:-[A-Za-z]+)*/g, word => {
+        const colorValue = palette[word.toLowerCase()];
+        return colorValue
+          ? `<span class="color-word" style="--swatch-color:${colorValue}">${word}</span>`
+          : word;
+      });
     }
 
     function addToCart(id){
@@ -173,7 +189,7 @@
             <button class="secondary-btn" onclick="window.location.href='https://wa.me/918371915111?text=${encodeURIComponent('Hello Ritu\'s Thread & HandBloom! I want to order ' + product.name + ' for ₹' + product.price + '.')}'">Order on WhatsApp</button>
           </div>
           <ul class="detail-list">
-            <li><b>Color</b><span class="color-value" style="--product-color:${getProductColorTextColor(product.color)}">${product.color || 'Handpicked palette'}</span></li>
+            <li><b>Color</b><span class="color-value">${renderProductColor(product.color)}</span></li>
             <li><b>Availability</b><span class="availability-value">Available</span></li>
             <li><b>Category</b><span>${product.category}</span></li>
             <li><b>Delivery</b><span>Local COD available</span></li>
